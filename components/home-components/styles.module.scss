@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.05);
-  padding: 50px 40px;
+  padding: 10px 40px 50px;
 }
 
 .containerTime {
@@ -80,4 +80,19 @@
 .rowDate {
   background-color: #FFFF00DB !important;
   font-weight: 600;
+}
+
+.messageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.edit {
+  transition: 0.5s;
+  &:hover {
+    cursor: pointer;
+    color: green;
+  }
 }
