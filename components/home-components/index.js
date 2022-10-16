@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import _ from 'lodash';
+import moment from 'moment';
+import { BsPencilFill } from 'react-icons/bs';
 
 import styles from './styles.module.scss';
-import moment from 'moment';
 import InputLabel from '../input-label';
 import { KEY } from '../../utils/constants/keyboard-keys'
+import { STATUS_TEXT, STATUS_KEY } from '../../utils/constants/status'
 import Modal from '../modal';
 import Button from '../button';
 import { GET_ACTIVITIES, CREATE_ACTIVITY, UPDATE_ACTIVITY } from './graphql';
 import Message from '../message';
-import { BsPencilFill } from 'react-icons/bs';
 
 import { MoonLoader } from 'react-spinners'
 import Dropdown from '../dropdown';
@@ -19,15 +20,16 @@ const FORMAT_DATE = "YYYY-MM-DD";
 const FORMAT_TIME = "HH:mm";
 
 const options = [
-  { text: 'Andamento', value: "in_progress", key: "in_progress" },
-  { text: 'Finalizado', value: "finished", key: "finished" },
-  { text: 'Não Finalizado', value: "not_finished", key: "not_finished" },
+  { text: 'Andamento', value: STATUS_KEY.in_progress, key: STATUS_KEY.in_progress },
+  { text: 'Finalizado', value: STATUS_KEY.finished, key: STATUS_KEY.finished },
+  { text: 'Não Finalizado', value: STATUS_KEY.not_finished, key: STATUS_KEY.not_finished },
+  {text: "Não Iniciado", value: STATUS_KEY.not_started, key: STATUS_KEY.not_started}
 ]
 
 function HomeComponent() {
   const [initialHour, setInitialHour] = useState("");
   const [endHour, setEndHour] = useState("");
-  const [status, setStatus] = useState('in_progress');
+  const [status, setStatus] = useState(STATUS_KEY.not_started);
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
@@ -39,13 +41,13 @@ function HomeComponent() {
   const currentTime = moment().format(FORMAT_TIME);
 
   const { loading, error, data = {}, refetch } = useQuery(GET_ACTIVITIES);
-  const [createActivity, { data: dataMutation, error: errorMutation, loading: loadingMutation }] = useMutation(CREATE_ACTIVITY)
+  const [createActivity, { error: errorMutation, loading: loadingMutation }] = useMutation(CREATE_ACTIVITY)
   const [updateActivity, { error: errorUpdate, loading: loadingUpdate }] = useMutation(UPDATE_ACTIVITY);
 
   const formatTime = (time = "") => {
     if (!time) return "";
 
-    return moment(`${todayMomment} ${time}`)
+    return moment(`${today} ${time}`)
   }
 
   const formatHourMinute = (value) => {
@@ -123,19 +125,24 @@ function HomeComponent() {
   }
 
   const handleOpen = (initialize = false) => {
-    if(initialize) {
+    if (initialize) {
       setInitialHour(currentTime);
       const newEndTime = formatTime(currentTime).add(50, "minutes").format(FORMAT_TIME);
       setEndHour(newEndTime);
     }
     setIsOpen(true);
   }
-
-  const handleClose = () => {
-    setIsOpen(false);
+  const resetValues = () => {
     setEndHour("");
     setInitialHour("");
     setDescription("");
+    setId("");
+    setStatus(STATUS_KEY.not_started);
+  }
+
+  const handleClose = () => {
+    setIsOpen(false);
+    resetValues();
   }
 
   const getTime = (value) => {
@@ -151,8 +158,12 @@ function HomeComponent() {
     setDescription(value.description);
     setStatus(value.status);
     setId(value.id);
-    setToday(value.dateWork);
+    setToday(moment(value.dateWork).utc().format(FORMAT_DATE));
   }
+
+  const handleDropdown = (item) => {
+    setStatus(item.value);
+  };
 
   const { activities = [] } = data;
 
@@ -173,7 +184,7 @@ function HomeComponent() {
                 <td>{moment(item.endHour).format(`${FORMAT_DATE} ${FORMAT_TIME}`)}</td>
                 <td>{item.spentTime}</td>
                 <td>{item.description}</td>
-                <td>{item.status}</td>
+                <td className={styles[item.status] ? styles[item.status] : ''}>{STATUS_TEXT[item.status]}</td>
                 <td onClick={() => handleEdit(item)} className={styles.edit}>{<BsPencilFill />}</td>
               </tr>
             )
@@ -264,7 +275,7 @@ function HomeComponent() {
         </div>
 
         <div className={`${styles.containerCenter} ${styles.marginTop}`}>
-          <label for="decriptionField">
+          <label for="decriptionField" className={styles.descriptionModal}>
             Descrição
             <textarea
               className={styles.textareaStyle}
@@ -280,6 +291,7 @@ function HomeComponent() {
           <Dropdown
             label='Status'
             options={options}
+            onChange={handleDropdown}
           />
         </div>
 
