@@ -17,7 +17,8 @@
   width: 400px;
   min-height: 300px;
   border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   padding: 20px 20px 30px;
 }
 
@@ -29,11 +30,11 @@
   top: -7px;
   right: -7px;
   transition: 0.3s;
-  border: 1px solid #CECECE;
+  border: 1px solid #cecece;
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  background-color: #FFF;
+  background-color: #fff;
   font-size: 18px;
 
   &:hover {
@@ -43,7 +44,7 @@
 }
 
 .header {
-  color: #4D4848;
+  color: #4d4848;
   font-size: 24px;
   margin-bottom: 10px;
 }

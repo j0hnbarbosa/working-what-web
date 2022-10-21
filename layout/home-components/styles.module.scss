@@ -7,7 +7,7 @@
 .containerTime {
   display: flex;
 
-  &>div:first-child {
+  & > div:first-child {
     margin-right: 30px;
   }
 }
@@ -24,10 +24,10 @@
 .textareaStyle {
   font-family: Arial;
   font-size: 18px;
-  color: #4D4848;
+  color: #4d4848;
   padding: 10px;
   box-sizing: border-box;
-  border: 2px solid #DEDEDE;
+  border: 2px solid #dedede;
   transition: 0.3s;
   outline: none;
   border-radius: 6px;
@@ -36,49 +36,48 @@
   height: 80px;
 
   &:focus {
-    border-color: #CCC;
+    border-color: #ccc;
   }
 }
 
 .tableStyles {
   font-family: "Arial";
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   width: 90%;
   text-align: center;
   border-collapse: collapse;
-  color: #4D4848;
+  color: #4d4848;
 
-  &>thead {
+  & > thead {
     background: #0584c9;
-    border-bottom: 5px solid #FFFFFF;
+    border-bottom: 5px solid #ffffff;
   }
 
-  &>thead th {
+  & > thead th {
     padding: 16px;
     font-size: 17px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
-    border-left: 2px solid #FFFFFF;
+    border-left: 2px solid #ffffff;
   }
 
-  &>thead th:first-child {
+  & > thead th:first-child {
     border-left: none;
   }
 
-  &>tbody td {
+  & > tbody td {
     font-size: 18px;
     padding: 14px 0;
   }
 
-  &>tbody>tr:nth-child(even) {
-    background-color: #D0E4F5;
+  & > tbody > tr:nth-child(even) {
+    background-color: #d0e4f5;
   }
-
 }
 
 .rowDate {
-  background-color: #FFFF00DB !important;
+  background-color: #ffff00db !important;
   font-weight: 600;
 }
 
@@ -98,20 +97,20 @@
 }
 
 .descriptionModal {
-  color: #4D4848;
+  color: #4d4848;
   font-weight: 600;
 }
 
 .finished {
-  background-color: #CCFFCC;
-  color: #3F663F;
+  background-color: #ccffcc;
+  color: #3f663f;
 }
 
 .not_finished {
-  background-color: #FFCCCC;
-  color: #CC0000;
+  background-color: #ffcccc;
+  color: #cc0000;
 }
 
 .in_progress {
-  color: #CC0000;
+  color: #cc0000;
 }

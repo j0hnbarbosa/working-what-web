@@ -1,5 +1,5 @@
 $selectedColor: #f1f1f1cd;
-$borderColor: #CECECE;
+$borderColor: #cecece;
 
 .container {
   display: flex;
@@ -18,7 +18,7 @@ $borderColor: #CECECE;
   border-radius: 4px;
   position: absolute;
   min-width: 180px;
-  background-color: #FFF;
+  background-color: #fff;
   top: 36px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -47,11 +47,10 @@ $borderColor: #CECECE;
   cursor: pointer;
   color: #a5a5a5cd;
   font-weight: 600;
-
 }
 
 .arrowDown {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-left: 5px solid transparent;

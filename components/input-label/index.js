@@ -1,17 +1,19 @@
-import React from 'react'
+import React from 'react';
 import styles from './styles.module.scss';
 
 function InputLabel({
-  label = "",
-  name = "",
-  onChange = () => { },
-  onKeyDown = () => { },
-  value = "",
-  placeholder = ""
+  label = '',
+  name = '',
+  onChange = () => {},
+  onKeyDown = () => {},
+  value = '',
+  placeholder = '',
 }) {
   return (
     <div className={styles.container}>
-      <label className={styles.labelStyle} for={name}>{label}</label>
+      <label className={styles.labelStyle} htmlFor={name}>
+        {label}
+      </label>
       <input
         className={styles.inputStyle}
         type="text"
@@ -23,7 +25,7 @@ function InputLabel({
         placeholder={placeholder}
       />
     </div>
-  )
+  );
 }
 
-export default InputLabel
+export default InputLabel;

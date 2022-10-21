@@ -7,22 +7,22 @@
 .inputStyle {
   font-family: Arial;
   font-size: 20px;
-  color: #4D4848;
+  color: #4d4848;
   min-width: 100px;
   padding: 4px 20px;
   box-sizing: border-box;
-  border: 2px solid #DEDEDE;
+  border: 2px solid #dedede;
   transition: 0.3s;
   outline: none;
   border-radius: 6px;
   text-align: center;
 
   &:focus {
-    border-color: #CCC;
+    border-color: #ccc;
   }
 }
 
 .labelStyle {
-  color: #4D4848;
+  color: #4d4848;
   font-weight: 600;
 }

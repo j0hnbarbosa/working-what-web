@@ -1,9 +1,9 @@
+import { MoonLoader } from 'react-spinners';
 import styles from './styles.module.scss';
-import { MoonLoader } from 'react-spinners'
 
 function Button({
-  label = "APERTE",
-  onClick = () => { },
+  label = 'APERTE',
+  onClick = () => {},
   loading = false,
   disabled = false,
 }) {
@@ -12,11 +12,12 @@ function Button({
       className={styles.buttonStyle}
       onClick={onClick}
       disabled={disabled}
+      type="button"
     >
       {!loading && label}
       {loading && <MoonLoader size={16} />}
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;

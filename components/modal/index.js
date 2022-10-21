@@ -1,19 +1,13 @@
-import React from 'react'
+import React from 'react';
 import style from './styles.module.scss';
 
 function Modal({
-  open = false,
-  onClose = () => { },
-  children,
-  header = "",
+  open = false, onClose = () => {}, children, header = '',
 }) {
-  if (!open)
-    return null;
+  if (!open) return null;
 
   return (
-    <div
-      className={style.container}
-    >
+    <div className={style.container}>
       <div className={style.content}>
         <div className={style.close} onClick={onClose}>
           X
@@ -22,7 +16,7 @@ function Modal({
         {children}
       </div>
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;
